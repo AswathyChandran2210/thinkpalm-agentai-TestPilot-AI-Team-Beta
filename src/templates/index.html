@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AI Test Automation Assistant</title>
+    <meta name="description" content="Premium AI assistant to generate Parabank test automation scenarios, Playwright scripts, and coverage analysis." />
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="page-bg"></div>
+      <div class="content-shell">
+        <header class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow"><span class="hero-icon">🚀</span>Parabank AI Test Assistant</span>
+            <p>Transform feature descriptions into Gherkin scenarios, Edge Playwright Python scripts, and gap-aware coverage reports.</p>
+            <p class="hero-note">Target application: <a href="https://parabank.parasoft.com/parabank/index.htm" target="_blank" rel="noopener noreferrer">https://parabank.parasoft.com/parabank/index.htm</a></p>
+          </div>
+        </header>
+
+        <main class="main-card">
+          <div class="layout-grid">
+            <aside class="panel sidebar-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="panel-label">Project details</p>
+                  <h2>About this project</h2>
+                </div>
+              </div>
+              <div class="sidebar-copy">
+                <p>This assistant generates test artifacts for Parabank flows by converting natural language descriptions into structured QA outputs.</p>
+                <ul>
+                  <li>Generate BDD-ready Gherkin scenarios</li>
+                  <li>Create Edge Playwright Python automation scripts</li>
+                  <li>Detect coverage gaps for missing or risky flows</li>
+                </ul>
+                <p>Built to support Parabank QA workflows with AI-powered generation and local fallback templates when the API is unavailable.</p>
+              </div>
+            </aside>
+
+            <section class="panel panel-form">
+              <div class="panel-header">
+                <div>
+                  <p class="panel-label">Flow settings</p>
+                  <h2>Compose your feature input</h2>
+                </div>
+              </div>
+
+              <form method="post" class="form-grid">
+                <div class="field">
+                  <label for="flow">Application Flow</label>
+                  <select id="flow" name="flow" class="control">
+                    {% for flow in flows %}
+                    <option value="{{ flow }}" {% if flow == selected_flow %}selected{% endif %}>{{ flow }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <div class="field field-full">
+                  <label for="description">Feature Description</label>
+                  <textarea id="description" name="description" rows="8" class="control" placeholder="Enter the feature description for the selected flow...">{{ description }}</textarea>
+                </div>
+
+                <div class="actions">
+                  <button type="submit" name="action" value="generate_gherkin" class="btn btn-primary">
+                    <span class="btn-icon">📄</span>
+                    Generate Gherkin Testcases
+                  </button>
+                  <button type="submit" name="action" value="generate_playwright" class="btn btn-primary">
+                    <span class="btn-icon">⚙️</span>
+                    Generate Playwright Script
+                  </button>
+                  <button type="submit" name="action" value="coverage_gaps" class="btn btn-secondary">
+                    <span class="btn-icon">🔍</span>
+                    Analyze Coverage Gaps
+                  </button>
+                  <button type="submit" name="action" value="generate_all" class="btn btn-secondary">
+                    <span class="btn-icon">✨</span>
+                    Generate All
+                  </button>
+                </div>
+              </form>
+
+              {% if screenshot_message %}
+              <div class="status-card">
+                <p>{{ screenshot_message }}</p>
+              </div>
+              {% endif %}
+            </section>
+          </div>
+
+          <section class="output-grid">
+            {% if outputs.gherkin %}
+            <article class="card">
+              <div class="card-heading">
+                <span class="card-badge">1</span>
+                <div>
+                  <h3>Generated Gherkin / BDD</h3>
+                  <p>Structured scenarios ready for BDD test design.</p>
+                </div>
+              </div>
+              <pre>{{ outputs.gherkin }}</pre>
+            </article>
+            {% endif %}
+
+            {% if outputs.playwright %}
+            <article class="card">
+              <div class="card-heading">
+                <span class="card-badge">2</span>
+                <div>
+                  <h3>Generated Playwright Python Script</h3>
+                  <p>Edge-ready automation script with modern selectors.</p>
+                </div>
+              </div>
+              <pre>{{ outputs.playwright }}</pre>
+            </article>
+            {% endif %}
+
+            {% if outputs.coverage %}
+            <article class="card">
+              <div class="card-heading">
+                <span class="card-badge">3</span>
+                <div>
+                  <h3>Coverage Gap Analysis</h3>
+                  <p>Identify missing scenarios and risk areas in the selected flow.</p>
+                </div>
+              </div>
+              <pre>{{ outputs.coverage }}</pre>
+            </article>
+            {% endif %}
+          </section>
+        </main>
+
+        <footer class="footer-card">
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
