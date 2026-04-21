@@ -192,16 +192,16 @@ def test_successful_fund_transfer(page):
 
 ## Screenshots
 
-![Dashboard](docs/screenshots/dashboard.png)
+![Dashboard](src/screenshot/screenshot_20260421_150457.png)
 *Figure 1: Main Dashboard UI for feature input and flow selection.*
 
-![Gherkin Output](docs/screenshots/gherkin_output.png)
+![Gherkin Output](src/screenshot/screenshot_20260420_162424.png)
 *Figure 2: Structured BDD scenarios with Positive, Negative, and Edge case groupings.*
 
-![Playwright Script](docs/screenshots/script_output.png)
+![Playwright Script](src/screenshot/screenshot_20260420_162343.png)
 *Figure 3: Executable Playwright Python script with 1:1 scenario mapping.*
 
-![Coverage Report](docs/screenshots/coverage_report.png)
+![Coverage Report](src/screenshot/screenshot_20260420_162512.png)
 *Figure 4: Detailed 5-section coverage analysis and risk assessment.*
 
 ## Demo Video
